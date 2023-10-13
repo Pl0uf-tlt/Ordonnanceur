@@ -75,7 +75,7 @@ def triPrio(List_processus, tps, List_processus_prio):
 def triPrioExe(List_processus_prio):
 	for i in range(len(List_processus_prio)):
 		nbProc = len(List_processus_prio[i])
-		TempsExe = [(List_processus_prio[i][j].TpsExe,j) for j in range(nbProc)]
+		TempsExe = [(List_processus_prio[i][j].TpsRestant,j) for j in range(nbProc)]
 		TempsExe.sort(reverse=True)
 		List_proc = [List_processus_prio[i][TempsExe[k][1]] for k in range(nbProc)]
 		List_processus_prio[i] = List_proc
@@ -125,6 +125,66 @@ def ordo(List_processus):
 		proc.TpsFin = tps 
 		proc.TpsSej = proc.TpsFin - proc.TpsArr
 		nbProcFinis += 1
+
+# Fonction : ordo_preemptif(List_processus)
+# But : Ordonne les processus fournis au système selon le principe d'un ordonnanceur preemptif par priorité
+# Arguments Nom					Type				Description
+# IN : 		List_processus		Liste de processus	Liste des processus que l'ordonnanceur doit ordonner
+# IN/OUT :	neant
+# OUT :		neant
+# Historique 				Date 		Version 	Par
+# Création de la fonction 	13/10/2023	0.1			Cédric Toulotte
+def ordo_preemptif(List_processus):
+	nbProc = len(List_processus)
+	nbProcFinis = 0
+	List_processus_prio = [[] for i in range(proces.prioMax)] 
+	List_processus_arr = triTpsArr(List_processus)
+	tps = 0
+	while nbProcFinis < nbProc :
+		if len(List_processus_arr) > 0 :
+			triPrio(List_processus_arr, tps, List_processus_prio)
+			triPrioExe(List_processus_prio)
+		proc_en_cours = False
+		i = 0
+		while not proc_en_cours:
+			if len(List_processus_prio[i]) != 0:
+				proc = List_processus_prio[i].pop()
+				proc_en_cours = True
+				proc.TpsAtt += tps - proc.TpsPause	
+			else:
+				i +=1
+				if i == proces.prioMax:
+					tps = List_processus_arr[-1].TpsArr
+					triPrio(List_processus_arr, tps, List_processus_prio)
+					triPrioExe(List_processus_prio)
+					i = 0
+		if len(List_processus_arr) > 0:
+			tpsArrProchainProc = List_processus_arr[-1].TpsArr
+			tpsFinExeProcCourant = tps + proc.TpsRestant
+			if tpsArrProchainProc < tpsFinExeProcCourant:
+				tps = tpsArrProchainProc
+				proc.TpsRestant = tpsFinExeProcCourant - tpsArrProchainProc
+				proc.TpsPause = tps
+				List_processus_prio[proc.Prio].append(proc)
+			else:
+				tps += proc.TpsRestant
+				proc.TpsFin = tps 
+				proc.TpsSej = proc.TpsFin - proc.TpsArr
+				nbProcFinis += 1
+		else:
+			tps += proc.TpsRestant
+			proc.TpsFin = tps 
+			proc.TpsSej = proc.TpsFin - proc.TpsArr
+			nbProcFinis += 1
+
+
+
+
+
+
+
+
+
 
 # Fonction : affichageOrdo(List_processus)
 # But : Affiche les processus et leurs ordre d'execution
@@ -189,38 +249,44 @@ def affichageOrdo2(List_processus):
 
 
 
-
 List_processus = proces.L_proc 
-affichageOrdo(List_processus)
-affichageOrdo2(List_processus)
-for i in  range(len(List_processus)):
+# affichageOrdo(List_processus)
+# affichageOrdo2(List_processus)
+ordo_preemptif(List_processus)
+for i in range(len(List_processus)):
 	proc = List_processus[i]
-	print(proc.Nom,proc.TpsFin)
+	print(proc.Nom,proc.TpsFin, proc.TpsSej)
+
+
 
 List_processus = proces.L_proc2 
-affichageOrdo(List_processus)
-affichageOrdo2(List_processus)
-for i in  range(len(List_processus)):
+#affichageOrdo(List_processus)
+# affichageOrdo2(List_processus)
+ordo_preemptif(List_processus)
+for i in range(len(List_processus)):
 	proc = List_processus[i]
-	print(proc.Nom,proc.TpsFin)
+	print(proc.Nom,proc.TpsFin, proc.TpsSej)
 
 List_processus = proces.L_proc3 
-affichageOrdo(List_processus)
-affichageOrdo2(List_processus)
-for i in  range(len(List_processus)):
+# affichageOrdo(List_processus)
+# affichageOrdo2(List_processus)
+ordo_preemptif(List_processus)
+for i in range(len(List_processus)):
 	proc = List_processus[i]
-	print(proc.Nom,proc.TpsFin)
+	print(proc.Nom,proc.TpsFin, proc.TpsSej)
 
 List_processus = proces.L_proc4
-affichageOrdo(List_processus)
-affichageOrdo2(List_processus)
-for i in  range(len(List_processus)):
+# affichageOrdo(List_processus)
+# affichageOrdo2(List_processus)
+ordo_preemptif(List_processus)
+for i in range(len(List_processus)):
 	proc = List_processus[i]
-	print(proc.Nom,proc.TpsFin)
+	print(proc.Nom,proc.TpsFin, proc.TpsSej)
 
 List_processus = proces.L_proc5
-affichageOrdo(List_processus)
-affichageOrdo2(List_processus)
-for i in  range(len(List_processus)):
+# affichageOrdo(List_processus)
+# affichageOrdo2(List_processus)
+ordo_preemptif(List_processus)
+for i in range(len(List_processus)):
 	proc = List_processus[i]
-	print(proc.Nom,proc.TpsFin)
+	print(proc.Nom,proc.TpsFin, proc.TpsSej)
