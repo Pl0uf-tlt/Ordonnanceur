@@ -52,7 +52,7 @@ def triPrio(List_processus, tps, List_processus_prio):
 	"""Cette fonction prends une liste de processus et un tps et ajoute tous les processus qui 
 	sont arrivés dans une liste de liste triée par ordre de priorité"""
 	tps_arr_proc = List_processus[-1].TpsArr
-	while tps_arr_proc <= tps and len(List_processus) > 0: # Pas fonctionnel, pop une liste vide et pop la liste en entier de toute maniere, a corriger
+	while tps_arr_proc <= tps and len(List_processus) > 0:
 		if len(List_processus) > 1:
 			proc = List_processus.pop()
 			prio_proc = proc.Prio 
