@@ -27,7 +27,7 @@ Python 3 is needed
 You need to have both Ordo.py and Processus.py in the same directory for the python scheduler to work.
 You can clone this directory with this command :
 ```bash
-git clone https://github.com/Pl0uf-tlt/Ordonnanceur.git
+$ git clone https://github.com/Pl0uf-tlt/Ordonnanceur.git
 ```
 It will also download the C scheduler at the same time. The C scheduler needs gcc to work, please make sure you have it on your machine.
 
