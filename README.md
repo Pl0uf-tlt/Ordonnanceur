@@ -30,10 +30,21 @@ git clone https://github.com/Pl0uf-tlt/Ordonnanceur.git
 
 ## Usage <a name = "usage"></a>
 
-To use the scheduler please execute Ordo.py
+To use the python scheduler please execute Ordo.py
 
 ```bash
 $ python3 Ordo.py
+```
+
+To use the C scheduler please compile it first :
+```bash
+$ gcc -Wall Ordo.c -o Ordo
+```
+
+Then use the executable with 
+
+```bash
+$ ./Ordo
 ```
 
 ## Credit <a name = "credit"></a>
