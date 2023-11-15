@@ -205,6 +205,7 @@ def affichageOrdo(List_processus):
 		ax.broken_barh([(proc.TpsFin-proc.TpsExe, proc.TpsExe)],(10*i,0.5))
 		listNomProc.append(proc.Nom)
 		listYProc.append(10*i)
+
 	ax.set_yticks(listYProc,labels=listNomProc)
 	plt.show()
 
@@ -253,40 +254,148 @@ List_processus = proces.L_proc
 # affichageOrdo(List_processus)
 # affichageOrdo2(List_processus)
 ordo_preemptif(List_processus)
+tmpSejMoyen = 0
+tmpAttMoyen = 0
 for i in range(len(List_processus)):
 	proc = List_processus[i]
 	print(proc.Nom,proc.TpsFin, proc.TpsSej)
-
+	tmpSejMoyen += proc.TpsSej
+	tmpAttMoyen += proc.TpsAtt
+print("le temps de sejour moyen est : ", tmpSejMoyen/len(List_processus))
+print("Le temps d'attente moyen est : ", tmpAttMoyen/len(List_processus))
 
 
 List_processus = proces.L_proc2 
 #affichageOrdo(List_processus)
 # affichageOrdo2(List_processus)
 ordo_preemptif(List_processus)
+tmpSejMoyen = 0
+tmpAttMoyen = 0
 for i in range(len(List_processus)):
 	proc = List_processus[i]
 	print(proc.Nom,proc.TpsFin, proc.TpsSej)
+	tmpSejMoyen += proc.TpsSej
+	tmpAttMoyen += proc.TpsAtt
+print("le temps de sejour moyen est : ", tmpSejMoyen/len(List_processus))
+print("Le temps d'attente moyen est : ", tmpAttMoyen/len(List_processus))
 
 List_processus = proces.L_proc3 
 # affichageOrdo(List_processus)
 # affichageOrdo2(List_processus)
 ordo_preemptif(List_processus)
+tmpSejMoyen = 0
+tmpAttMoyen = 0
 for i in range(len(List_processus)):
 	proc = List_processus[i]
 	print(proc.Nom,proc.TpsFin, proc.TpsSej)
+	tmpSejMoyen += proc.TpsSej
+	tmpAttMoyen += proc.TpsAtt
+print("le temps de sejour moyen est : ", tmpSejMoyen/len(List_processus))
+print("Le temps d'attente moyen est : ", tmpAttMoyen/len(List_processus))
 
 List_processus = proces.L_proc4
 # affichageOrdo(List_processus)
 # affichageOrdo2(List_processus)
 ordo_preemptif(List_processus)
+tmpSejMoyen = 0
+tmpAttMoyen = 0
 for i in range(len(List_processus)):
 	proc = List_processus[i]
 	print(proc.Nom,proc.TpsFin, proc.TpsSej)
+	tmpSejMoyen += proc.TpsSej
+	tmpAttMoyen += proc.TpsAtt
+print("le temps de sejour moyen est : ", tmpSejMoyen/len(List_processus))
+print("Le temps d'attente moyen est : ", tmpAttMoyen/len(List_processus))
 
 List_processus = proces.L_proc5
 # affichageOrdo(List_processus)
 # affichageOrdo2(List_processus)
 ordo_preemptif(List_processus)
+tmpSejMoyen = 0
+tmpAttMoyen = 0
 for i in range(len(List_processus)):
 	proc = List_processus[i]
 	print(proc.Nom,proc.TpsFin, proc.TpsSej)
+	tmpSejMoyen += proc.TpsSej
+	tmpAttMoyen += proc.TpsAtt
+print("le temps de sejour moyen est : ", tmpSejMoyen/len(List_processus))
+print("Le temps d'attente moyen est : ", tmpAttMoyen/len(List_processus))
+
+
+
+
+
+
+
+
+
+
+
+
+
+List_processus = proces.L_proc 
+affichageOrdo(List_processus)
+affichageOrdo2(List_processus)
+tmpSejMoyen = 0
+tmpAttMoyen = 0
+for i in range(len(List_processus)):
+	proc = List_processus[i]
+	print(proc.Nom,proc.TpsFin, proc.TpsSej)
+	tmpSejMoyen += proc.TpsSej
+	tmpAttMoyen += proc.TpsAtt
+print("le temps de sejour moyen est : ", tmpSejMoyen/len(List_processus))
+print("Le temps d'attente moyen est : ", tmpAttMoyen/len(List_processus))
+
+
+List_processus = proces.L_proc2 
+affichageOrdo(List_processus)
+affichageOrdo2(List_processus)
+tmpSejMoyen = 0
+tmpAttMoyen = 0
+for i in range(len(List_processus)):
+	proc = List_processus[i]
+	print(proc.Nom,proc.TpsFin, proc.TpsSej)
+	tmpSejMoyen += proc.TpsSej
+	tmpAttMoyen += proc.TpsAtt
+print("le temps de sejour moyen est : ", tmpSejMoyen/len(List_processus))
+print("Le temps d'attente moyen est : ", tmpAttMoyen/len(List_processus))
+
+List_processus = proces.L_proc3 
+affichageOrdo(List_processus)
+affichageOrdo2(List_processus)
+tmpSejMoyen = 0
+tmpAttMoyen = 0
+for i in range(len(List_processus)):
+	proc = List_processus[i]
+	print(proc.Nom,proc.TpsFin, proc.TpsSej)
+	tmpSejMoyen += proc.TpsSej
+	tmpAttMoyen += proc.TpsAtt
+print("le temps de sejour moyen est : ", tmpSejMoyen/len(List_processus))
+print("Le temps d'attente moyen est : ", tmpAttMoyen/len(List_processus))
+
+List_processus = proces.L_proc4
+affichageOrdo(List_processus)
+affichageOrdo2(List_processus)
+tmpSejMoyen = 0
+tmpAttMoyen = 0
+for i in range(len(List_processus)):
+	proc = List_processus[i]
+	print(proc.Nom,proc.TpsFin, proc.TpsSej)
+	tmpSejMoyen += proc.TpsSej
+	tmpAttMoyen += proc.TpsAtt
+print("le temps de sejour moyen est : ", tmpSejMoyen/len(List_processus))
+print("Le temps d'attente moyen est : ", tmpAttMoyen/len(List_processus))
+
+List_processus = proces.L_proc5
+affichageOrdo(List_processus)
+affichageOrdo2(List_processus)
+tmpSejMoyen = 0
+tmpAttMoyen = 0
+for i in range(len(List_processus)):
+	proc = List_processus[i]
+	print(proc.Nom,proc.TpsFin, proc.TpsSej)
+	tmpSejMoyen += proc.TpsSej
+	tmpAttMoyen += proc.TpsAtt
+print("le temps de sejour moyen est : ", tmpSejMoyen/len(List_processus))
+print("Le temps d'attente moyen est : ", tmpAttMoyen/len(List_processus))
+
